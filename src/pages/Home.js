@@ -1,30 +1,36 @@
 import React, { useState } from "react";
 import Form from "../components/Form";
+import { useSelector, useDispatch } from 'react-redux'
+import { setTodos, setTodo ,setList } from '../stores/todoSlice'
 
 function Home() {
-  const [todo, setTodo] = useState("");
-  const [list, setList] = useState([]);
+  // const [todo, setTodo] = useState("");
+  // const [list, setList] = useState([]);
   let [count, setCount] = useState(1);
   let getList = localStorage.getItem("todos");
   let parseList = JSON.parse(getList);
+
+  const todo = useSelector((state) => state.todo.todo)
+  const todos = useSelector((state) => state.todo.todos)
+  const dispatch = useDispatch()
 
   const addLocalStorage = (e) => {
     if (todo) {
       setCount(count + 1);
       const newTask = { id: count, name: todo, status: false};
-      setList([...list, newTask]);
-      localStorage.setItem("todos", JSON.stringify([...list, newTask]));
+      dispatch(setList([...todos, newTask]));
+      localStorage.setItem("todos", JSON.stringify([...todos, newTask]));
     } else {
       console.log("YOK");
     }
-    setTodo("");
+    // setTodo("");
   };
  
 
   return (
     <div>
       <div className="container max-w-screen-md  my-5 m-auto text-center">
-        <Form todo={todo} setTodo={setTodo} />
+        <Form/>
         {todo.length === 0 ? (
           <></>
         ) : (
@@ -47,10 +53,10 @@ function Home() {
               <div className="flex  justify-between mt-[15px] border-t text-[11px] text-gray-800 italic tracking-wide	text-italic">
                 <div className="flex mt-[4px]"
                  onClick={() => {
-                  let status = list.map((itm) =>
+                  let status = todos.map((itm) =>
                     itm.id === item.id ? { ...itm, status: !itm.status } : itm
                   );
-                  setList(status);
+                  dispatch(setTodos((status)));
                   localStorage.setItem("todos", JSON.stringify(status));
                 }}
                 >
