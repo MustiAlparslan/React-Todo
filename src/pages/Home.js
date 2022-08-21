@@ -19,7 +19,7 @@ function Home() {
       setList([...list, newTask]);
       localStorage.setItem("TODOS", JSON.stringify([...list, newTask]));
     } else {
-      console.log("YOK");
+      console.log("");
     }
     setTodo("");
   };
