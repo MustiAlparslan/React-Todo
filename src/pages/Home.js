@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import Form from "../components/Form";
-import { TiTick } from "react-icons/ti";
-import { AiOutlineClose } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
 
 function Home() {
   const [todo, setTodo] = useState("");
   const [list, setList] = useState([]);
   let [count, setCount] = useState(1);
-
   let getList = localStorage.getItem("todos");
   let parseList = JSON.parse(getList);
+
   const addLocalStorage = (e) => {
     if (todo) {
       setCount(count + 1);
-      const newTask = { id: count, name: todo, status: false };
+      const newTask = { id: count, name: todo, status: false};
       setList([...list, newTask]);
       localStorage.setItem("todos", JSON.stringify([...list, newTask]));
     } else {
@@ -22,6 +19,7 @@ function Home() {
     }
     setTodo("");
   };
+ 
 
   return (
     <div>
@@ -42,31 +40,30 @@ function Home() {
           {parseList.map((item, index) => (
             <li
               className="bg-white shadow-xl	py-2 px-4 opacity-95 rounded-[4px]	 shadow-[#818ab5]	  flex flex-col text-left  max-w-lg 	w-full  break-all my-8   px-[8px] min-h-[70px]  flex justify-between"
-              key={index}
-            >
+              key={index}>
               <h1 className="font-bold">TODO</h1>
-              <span className="italic">{item.name}</span>
+             <span className="italic">{item.name}</span>
 
               <div className="flex  justify-between mt-[15px] border-t text-[11px] text-gray-800 italic tracking-wide	text-italic">
-                <div
-                  className="flex mt-[4px]"
-                  onClick={() => {
-                    let status = list.map((itm) =>
-                      itm.id === item.id ? { ...itm, status: !itm.status } : itm
-                    );
-                    setList(status);
-                    localStorage.setItem("todos", JSON.stringify(status));
-                  }}
+                <div className="flex mt-[4px]"
+                 onClick={() => {
+                  let status = list.map((itm) =>
+                    itm.id === item.id ? { ...itm, status: !itm.status } : itm
+                  );
+                  setList(status);
+                  localStorage.setItem("todos", JSON.stringify(status));
+                }}
                 >
                   {item.status ? (
-                    <TiTick size={22} style={{ color: "green" }} />
+                    <span className="bg-green-300 hover:cursor-pointer  rounded-[50px] w-[8px]  h-[8px] p-2.5"></span>
                   ) : (
-                    <AiOutlineClose size={22} style={{ color: "red" }} />
+                    <span className="bg-red-300  hover:cursor-pointer rounded-[50px] w-[8px] h-[8px] p-2.5"></span>
                   )}
                 </div>
-
-                <div className="text-[14px] hover:cursor-pointer mt-[4px] px-[4px] ">
-                  <MdDelete size={22} />
+                
+                <div 
+                  className="text-[14px] hover:cursor-pointer mt-[4px] px-[4px] ">
+                  Edit
                 </div>
               </div>
             </li>
