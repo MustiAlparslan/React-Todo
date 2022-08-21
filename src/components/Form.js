@@ -1,10 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setTodo } from '../stores/todoSlice'
 
-function Form() {
-  const todo = useSelector((state) => state.todo.todo)
-  const dispatch = useDispatch()
+function Form({setTodo, todo}) {
   return (
     <div>
         <form>
@@ -13,7 +9,7 @@ function Form() {
             type="text"
             value={todo}
             placeholder="Add a todo..."
-            onChange={(e) => dispatch(setTodo(e.target.value))}
+            onChange={(e) => setTodo(e.target.value)}
             maxLength="120"
           />
         </form>
