@@ -4,10 +4,11 @@ import Header from "./components/Header";
 import routes from "./routes";
 
 function App() {
+  const route = useRoutes(routes);
   return (
     <div>
       <Header />
-      {useRoutes(routes)}
+      {route}
     </div>
   );
 }
