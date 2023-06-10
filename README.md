@@ -51,8 +51,8 @@ To run the app, follow these steps:
 ## Screenshots
 
 <p float="left">
-  <img src="https://github.com/MustiAlparslan/React-Todo/assets/98889289/63a2706e-9801-45c4-a5ad-1c3d2a7d2481" width="200" />
-  <img src="https://github.com/MustiAlparslan/React-Todo/assets/98889289/a9187ef9-ca9e-4d54-9d51-90df4ba9c0bb" width="200" />
+  <img src="https://github.com/MustiAlparslan/React-Todo/assets/98889289/63a2706e-9801-45c4-a5ad-1c3d2a7d2481" width="400" />
+  <img src="https://github.com/MustiAlparslan/React-Todo/assets/98889289/a9187ef9-ca9e-4d54-9d51-90df4ba9c0bb" width="400" />
 </p>
 
 ## Contributing to React-Todo
